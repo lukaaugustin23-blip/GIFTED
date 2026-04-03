@@ -101,7 +101,7 @@ function initGSAPAnimations() {
       duration: 0.9,
       stagger: 0.06,
       ease: 'expo.out',
-      delay: 0.3
+      delay: 1.6
     });
   }
 
@@ -110,7 +110,7 @@ function initGSAPAnimations() {
     y: 0,
     duration: 0.7,
     ease: 'expo.out',
-    delay: 0.8
+    delay: 2.1
   });
 
   gsap.to('.hero-body', {
@@ -118,7 +118,7 @@ function initGSAPAnimations() {
     y: 0,
     duration: 0.7,
     ease: 'expo.out',
-    delay: 1
+    delay: 2.3
   });
 
   gsap.to('.hero-buttons', {
@@ -126,7 +126,7 @@ function initGSAPAnimations() {
     y: 0,
     duration: 0.7,
     ease: 'expo.out',
-    delay: 1.2
+    delay: 2.5
   });
 
   const missionBgMap = document.querySelector('.mission-bg-map');
