@@ -157,8 +157,12 @@ function initGSAPAnimations() {
 
   const missionTitle = document.querySelector('.mission-title');
   if (missionTitle) {
-    const words = missionTitle.textContent?.split(' ') || [];
-    missionTitle.innerHTML = words.map(word => `<span style="display: inline-block; opacity: 0; transform: translateY(12px);">${word}</span>`).join(' ');
+    const lines = missionTitle.innerHTML.split(/<br\s*\/?>/i);
+    missionTitle.innerHTML = lines
+      .map(line => line.trim().split(/\s+/).filter(Boolean)
+        .map(word => `<span style="display: inline-block; opacity: 0; transform: translateY(12px);">${word}</span>`)
+        .join(' '))
+      .join('<br>');
 
     const wordSpans = missionTitle.querySelectorAll('span');
     gsap.to(wordSpans, {
