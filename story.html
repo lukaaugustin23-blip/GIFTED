@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miljhon's Story — G.I.F.T.Ed</title>
+  <meta name="description" content="One story of 11 million. Meet Miljhon, a 9-year-old in the Philippines who goes to school every day with nothing to write with.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --off-white: #F7F5F2;
+      --warm-gray: #E8E4DF;
+      --ink: #1A1A1A;
+      --mid-gray: #6B6B6B;
+      --accent: #C8832A;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { overflow-x: hidden; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ink);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ── Navbar ───────────────────────────────────────────────── */
+    .story-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(26, 26, 26, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .story-nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .story-nav-back {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 300ms ease;
+    }
+
+    .story-nav-back:hover { color: var(--accent); }
+
+    /* ── Panel base ───────────────────────────────────────────── */
+    .panel {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+    }
+
+    /* ── Panel 1: The Statistic ───────────────────────────────── */
+    .panel-1 {
+      background: var(--ink);
+      text-align: center;
+    }
+
+    .p1-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .p1-number {
+      font-family: var(--font-display);
+      font-size: clamp(72px, 12vw, 120px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1;
+      margin-top: 24px;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .p1-text {
+      font-family: var(--font-body);
+      font-size: 22px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-top: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .p1-source {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 16px;
+      opacity: 0;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin: 64px auto 0;
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.6; }
+    }
+
+    /* ── Panel 2: Meet Miljhon ────────────────────────────────── */
+    .panel-2 {
+      background: var(--ink);
+      text-align: center;
+    }
+
+    .p2-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .p2-image {
+      width: 400px;
+      max-width: 90vw;
+      height: 500px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 32px auto 0;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .p2-image-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .p2-heading {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .p2-body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 20px auto 0;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* ── Panel 3: His Reality ─────────────────────────────────── */
+    .panel-3 {
+      background: var(--ink);
+      min-height: 150vh;
+    }
+
+    .panel-3-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1100px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .p3-image {
+      width: 100%;
+      max-width: 420px;
+      height: 420px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .p3-image-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent);
+    }
+
+    .p3-text-block { }
+
+    .p3-heading {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .p3-body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      margin-top: 24px;
+    }
+
+    .p3-italic {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.4;
+      margin-top: 32px;
+    }
+
+    /* word-split spans */
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    /* ── Panel 4: The Impact ──────────────────────────────────── */
+    .panel-4 {
+      background: var(--ink);
+      text-align: center;
+      min-height: 150vh;
+    }
+
+    .p4-headline {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.3;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .p4-beat-1 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.3;
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .p4-beat-2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.3;
+      margin-top: 40px;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .p4-body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.9;
+      max-width: 480px;
+      margin: 48px auto 0;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* ── Panel 5: Transition ──────────────────────────────────── */
+    .panel-5 {
+      text-align: center;
+      background: var(--ink);
+    }
+
+    .p5-heading {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.2;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .p5-body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--mid-gray);
+      line-height: 1.8;
+      max-width: 500px;
+      margin: 20px auto 0;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* ── Panel 6: The Ask ─────────────────────────────────────── */
+    .panel-6 {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .p6-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .p6-heading {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 8vw, 80px);
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-top: 16px;
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    .p6-body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--mid-gray);
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 24px auto 0;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .p6-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 40px;
+      border-radius: 4px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 300ms var(--ease-expo);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-donate {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+    }
+
+    .btn-donate::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 600ms var(--ease-expo);
+    }
+
+    .btn-donate:hover::after { left: 100%; }
+
+    .btn-donate:hover {
+      background: #D4943A;
+      box-shadow: 0 8px 32px rgba(200,131,42,0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-donate:active { transform: scale(0.97); }
+
+    .btn-back {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+    }
+
+    .btn-back:hover {
+      background: var(--ink);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-back:active { transform: scale(0.97); }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    .story-footer {
+      background: var(--off-white);
+      padding: 60px 48px 40px;
+      text-align: center;
+      border-top: 1px solid var(--warm-gray);
+    }
+
+    .story-footer-logo {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--ink);
+    }
+
+    .story-footer-tagline {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--mid-gray);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .story-footer-source {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--mid-gray);
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .panel { padding: 100px 24px 60px; }
+      .story-nav { padding: 14px 24px; }
+
+      .panel-3-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .p3-image {
+        height: 260px;
+        max-width: 100%;
+      }
+
+      .story-footer { padding: 48px 24px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="story-nav">
+    <a href="index.html" class="story-nav-logo">G.I.F.T.Ed</a>
+    <a href="index.html" class="story-nav-back">← Back to main site</a>
+  </nav>
+
+  <!-- Panel 1: The Statistic -->
+  <section class="panel panel-1" id="p1">
+    <p class="p1-label">ONE STORY OF MILLIONS</p>
+    <div class="p1-number">11 million</div>
+    <p class="p1-text">children in the Philippines are not enrolled in school.</p>
+    <p class="p1-source">— Philippine Statistics Authority</p>
+    <div class="pulse-dot"></div>
+  </section>
+
+  <!-- Panel 2: Meet Miljhon -->
+  <section class="panel panel-2" id="p2">
+    <p class="p2-label">HIS NAME IS MILJHON</p>
+    <div class="p2-image">
+      <span class="p2-image-label">PHOTO COMING SOON</span>
+    </div>
+    <h2 class="p2-heading">He is 9 years old.<br>He lives in the Philippines.</h2>
+    <p class="p2-body">His family earns less than $23 a month.<br>Every morning, he gets up and goes to school anyway.</p>
+  </section>
+
+  <!-- Panel 3: His Reality -->
+  <section class="panel panel-3" id="p3">
+    <div class="panel-3-inner">
+      <div class="p3-image">
+        <span class="p3-image-label">PHOTO COMING SOON</span>
+      </div>
+      <div class="p3-text-block">
+        <h2 class="p3-heading" data-word-split>He borrows his sister's notebook.</h2>
+        <p class="p3-body" data-word-split>He waits for classmates to finish so he can use their pencil.</p>
+        <p class="p3-italic" data-word-split>Some days there isn't one. Some days he just watches.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Panel 4: The Impact -->
+  <section class="panel panel-4" id="p4">
+    <p class="p4-headline">Without supplies,<br>kids fall behind.</p>
+    <p class="p4-beat-1">Fall behind in school.</p>
+    <p class="p4-beat-2">Fall behind in life.</p>
+    <p class="p4-body">A pencil costs 10 cents. A notebook costs 50 cents.<br>
+    These are not luxuries. They are the difference<br>between a future and no future.</p>
+  </section>
+
+  <!-- Panel 5: Transition -->
+  <section class="panel panel-5" id="p5">
+    <h2 class="p5-heading">This is why<br>G.I.F.T.Ed exists.</h2>
+    <p class="p5-body">Founded by two high school juniors from New Jersey, G.I.F.T.Ed raises funds to provide pens, pencils, notebooks and tablets to students in the Philippines who deserve every opportunity to learn.</p>
+  </section>
+
+  <!-- Panel 6: The Ask -->
+  <section class="panel panel-6" id="p6">
+    <p class="p6-label">YOU CAN HELP</p>
+    <h2 class="p6-heading">One pencil.<br>One child.<br>One chance.</h2>
+    <p class="p6-body">Your $10 gives 100 kids a pencil.<br>
+    Your $25 supplies an entire classroom.<br>
+    Every dollar goes directly to students — 100%.</p>
+    <div class="p6-buttons">
+      <a href="index.html#donate" class="btn btn-donate">Donate Now</a>
+      <a href="index.html" class="btn btn-back">← Back to G.I.F.T.Ed</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="story-footer">
+    <p class="story-footer-logo">G.I.F.T.Ed</p>
+    <p class="story-footer-tagline">GLOBAL INITIATIVE FOR THOROUGH EDUCATION</p>
+    <p class="story-footer-source">
+      Story sourced from World Vision Philippines documentation.<br>
+      © 2025 G.I.F.T.Ed · Founded in New Jersey · Supporting the Philippines
+    </p>
+  </footer>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ── Word-split Panel 3 elements ──────────────────────────────
+    document.querySelectorAll('[data-word-split]').forEach(function(el) {
+      var lines = el.innerHTML.split(/<br\s*\/?>/i);
+      el.innerHTML = lines.map(function(line) {
+        return line.trim().split(/\s+/).filter(Boolean)
+          .map(function(w) { return '<span class="word">' + w + '</span>'; })
+          .join(' ');
+      }).join('<br>');
+    });
+
+    // ── Panel 1 ──────────────────────────────────────────────────
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#p1',
+        start: 'top 75%',
+        end: 'bottom 20%',
+        scrub: 1
+      }
+    })
+    .to('.p1-label',  { opacity: 1, y: 0, duration: 1 })
+    .to('.p1-number', { opacity: 1, scale: 1, duration: 1.2 }, '-=0.6')
+    .to('.p1-text',   { opacity: 1, y: 0, duration: 1 }, '-=0.6')
+    .to('.p1-source', { opacity: 1, duration: 0.8 }, '-=0.3');
+
+    // ── Panel 2 ──────────────────────────────────────────────────
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#p2',
+        start: 'top 80%',
+        end: 'bottom 15%',
+        scrub: 1
+      }
+    })
+    .to('.p2-label',   { opacity: 1, y: 0, duration: 1 })
+    .to('.p2-image',   { opacity: 1, y: 0, duration: 1.2 }, '-=0.5')
+    .to('.p2-heading', { opacity: 1, y: 0, duration: 1 }, '-=0.6')
+    .to('.p2-body',    { opacity: 1, y: 0, duration: 1 }, '-=0.5');
+
+    // ── Panel 3 ──────────────────────────────────────────────────
+    var words = document.querySelectorAll('#p3 .word');
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#p3',
+        start: 'top 80%',
+        end: 'bottom 10%',
+        scrub: 1.5
+      }
+    })
+    .to('.p3-image', { opacity: 1, y: 0, duration: 1.5 })
+    .to(words, { opacity: 1, y: 0, stagger: 0.08, duration: 0.6 }, '-=0.5');
+
+    // ── Panel 4 ──────────────────────────────────────────────────
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#p4',
+        start: 'top 80%',
+        end: 'bottom 10%',
+        scrub: 2
+      }
+    })
+    .to('.p4-headline', { opacity: 1, y: 0, duration: 2 })
+    .to('.p4-beat-1',   { opacity: 1, y: 0, duration: 2 }, '+=0.3')
+    .to('.p4-beat-2',   { opacity: 1, y: 0, duration: 2 }, '+=0.3')
+    .to('.p4-body',     { opacity: 1, y: 0, duration: 1.5 }, '+=0.4');
+
+    // ── Panel 5: dark → white background transition ───────────────
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#p5',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.5
+      }
+    })
+    .fromTo('#p5', { backgroundColor: '#1A1A1A' }, { backgroundColor: '#FFFFFF', ease: 'none', duration: 3 })
+    .to('.p5-heading', { opacity: 1, y: 0, duration: 1.5 }, '-=1.8')
+    .to('.p5-body',    { opacity: 1, y: 0, duration: 1.5 }, '-=1.2');
+
+    // ── Panel 6 ──────────────────────────────────────────────────
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#p6',
+        start: 'top 80%',
+        end: 'bottom 15%',
+        scrub: 1
+      }
+    })
+    .to('.p6-label',   { opacity: 1, y: 0, duration: 1 })
+    .to('.p6-heading', { opacity: 1, y: 0, duration: 1 }, '-=0.5')
+    .to('.p6-body',    { opacity: 1, y: 0, duration: 1 }, '-=0.5')
+    .to('.p6-buttons', { opacity: 1, y: 0, duration: 0.8 }, '-=0.3');
+  </script>
+</body>
+</html>
