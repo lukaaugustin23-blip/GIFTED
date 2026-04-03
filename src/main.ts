@@ -73,7 +73,7 @@ function animate() {
   camera.position.y = -targetY * 0.01;
   camera.lookAt(scene.position);
 
-  particles.forEach((particle, i) => {
+  particles.forEach((particle) => {
     particle.userData.phase += 0.01;
 
     particle.position.x += particle.userData.speedX;
@@ -293,21 +293,12 @@ function initGSAPAnimations() {
       }
     );
   }
+
 }
 
 function initVanillaTilt() {
   const isMobile = window.innerWidth < 768;
   if (isMobile) return;
-
-  const statCards = document.querySelectorAll('.stat-card[data-tilt]');
-  statCards.forEach(card => {
-    VanillaTilt.init(card, {
-      max: 8,
-      speed: 400,
-      glare: true,
-      'max-glare': 0.08
-    });
-  });
 
   const founderCards = document.querySelectorAll('.founder-card[data-tilt]');
   founderCards.forEach(card => {
