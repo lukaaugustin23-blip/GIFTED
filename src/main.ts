@@ -276,6 +276,23 @@ function initGSAPAnimations() {
       }
     );
   });
+
+  const donateSection = document.querySelector('.donate-section');
+  if (donateSection) {
+    gsap.fromTo(donateSection,
+      { backgroundColor: 'transparent' },
+      {
+        backgroundColor: '#1A1A1A',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: donateSection,
+          start: 'top bottom+=40%',
+          end: 'top top',
+          scrub: 2
+        }
+      }
+    );
+  }
 }
 
 function initVanillaTilt() {
