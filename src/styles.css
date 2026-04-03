@@ -1027,7 +1027,7 @@ section {
 
 /* ── Story teaser ──────────────────────────────────────────── */
 .story-teaser {
-  background: var(--off-white);
+  background: var(--white);
   padding: 120px 24px;
   text-align: center;
 }
