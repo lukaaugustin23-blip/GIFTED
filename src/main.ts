@@ -344,6 +344,47 @@ function initContactForm() {
   });
 }
 
+function initLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+  const line = loader.querySelector('.loader-line') as HTMLElement;
+  // Double rAF ensures paint has occurred before triggering the CSS transition
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (line) line.style.width = '60px';
+    });
+  });
+  setTimeout(() => {
+    loader.style.opacity = '0';
+    setTimeout(() => { loader.style.display = 'none'; }, 300);
+  }, 900);
+}
+
+function initScrollProgress() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+  }, { passive: true });
+}
+
+function initActiveNav() {
+  const navLinks = document.querySelectorAll<HTMLElement>('.nav-link');
+  if (!navLinks.length) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.dataset.section === id);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+}
+
 function handleMouseMove(event: MouseEvent) {
   mouseX = (event.clientX - window.innerWidth / 2) * 0.5;
   mouseY = (event.clientY - window.innerHeight / 2) * 0.5;
@@ -358,6 +399,9 @@ function handleResize() {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  initLoader();
+  initScrollProgress();
+  initActiveNav();
   setTimeout(() => {
     if (typeof THREE !== 'undefined') {
       initThreeJS();
