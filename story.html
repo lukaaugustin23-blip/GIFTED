@@ -621,10 +621,7 @@
         scrub: 1
       }
     })
-    .to('.p2-label',   { opacity: 1, y: 0, duration: 1 })
-    .to('.p2-image',   { opacity: 1, y: 0, duration: 1.2 }, '-=0.5')
-    .to('.p2-heading', { opacity: 1, y: 0, duration: 1 }, '-=0.6')
-    .to('.p2-body',    { opacity: 1, y: 0, duration: 1 }, '-=0.5');
+    .to(['.p2-label', '.p2-image', '.p2-heading', '.p2-body'], { opacity: 1, y: 0, duration: 1.2 });
 
     // ── Panel 3 ──────────────────────────────────────────────────
     var words = document.querySelectorAll('#p3 .word');
