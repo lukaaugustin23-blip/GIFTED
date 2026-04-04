@@ -531,7 +531,7 @@
     <div class="p2-image">
       <span class="p2-image-label">PHOTO COMING SOON</span>
     </div>
-    <h2 class="p2-heading">He is 9 years old.<br>He lives in the Philippines.</h2>
+    <h2 class="p2-heading" data-word-split>He is 9 years old.<br>He lives in the Philippines.</h2>
     <p class="p2-body">His family earns less than $23 a month.<br>Every morning, he gets up and goes to school anyway.</p>
   </section>
 
@@ -551,23 +551,23 @@
 
   <!-- Panel 4: The Impact -->
   <section class="panel panel-4" id="p4">
-    <p class="p4-headline">Without supplies,<br>kids fall behind.</p>
-    <p class="p4-beat-1">Fall behind in school.</p>
-    <p class="p4-beat-2">Fall behind in life.</p>
+    <p class="p4-headline" data-word-split>Without supplies,<br>kids fall behind.</p>
+    <p class="p4-beat-1" data-word-split>Fall behind in school.</p>
+    <p class="p4-beat-2" data-word-split>Fall behind in life.</p>
     <p class="p4-body">A pencil costs 10 cents. A notebook costs 50 cents.<br>
     These are not luxuries. They are the difference<br>between a future and no future.</p>
   </section>
 
   <!-- Panel 5: Transition -->
   <section class="panel panel-5" id="p5">
-    <h2 class="p5-heading">This is why<br>G.I.F.T.Ed exists.</h2>
+    <h2 class="p5-heading" data-word-split>This is why<br>G.I.F.T.Ed exists.</h2>
     <p class="p5-body">Founded by two high school juniors from New Jersey, G.I.F.T.Ed raises funds to provide pens, pencils, notebooks and tablets to students in the Philippines who deserve every opportunity to learn.</p>
   </section>
 
   <!-- Panel 6: The Ask -->
   <section class="panel panel-6" id="p6">
     <p class="p6-label">YOU CAN HELP</p>
-    <h2 class="p6-heading">One pencil.<br>One child.<br>One chance.</h2>
+    <h2 class="p6-heading" data-word-split>One pencil.<br>One child.<br>One chance.</h2>
     <p class="p6-body">Your $10 gives 100 kids a pencil.<br>
     Your $25 supplies an entire classroom.<br>
     Every dollar goes directly to students — 100%.</p>
@@ -590,7 +590,7 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // ── Word-split Panel 3 elements ──────────────────────────────
+    // ── Word-split all [data-word-split] headings ────────────────
     document.querySelectorAll('[data-word-split]').forEach(function(el) {
       var lines = el.innerHTML.split(/<br\s*\/?>/i);
       el.innerHTML = lines.map(function(line) {
@@ -598,93 +598,67 @@
           .map(function(w) { return '<span class="word">' + w + '</span>'; })
           .join(' ');
       }).join('<br>');
+      // Container had opacity:0 in CSS — lift it so word spans drive visibility
+      gsap.set(el, { opacity: 1, y: 0 });
     });
+
+    // Helper: word spans inside a selector
+    function w(sel) { return document.querySelectorAll(sel + ' .word'); }
 
     // ── Panel 1 ──────────────────────────────────────────────────
     gsap.timeline({
-      scrollTrigger: {
-        trigger: '#p1',
-        start: 'top 75%',
-        end: 'bottom top',
-        scrub: 1
-      }
+      scrollTrigger: { trigger: '#p1', start: 'top 80%', once: true }
     })
-    .to('.p1-label', { opacity: 1, y: 0, duration: 1 })
-    .to('.p1-text',  { opacity: 1, y: 0, duration: 1 }, '-=0.6');
+    .to('.p1-label', { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+    .to('.p1-text',  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15');
 
     // ── Panel 2 ──────────────────────────────────────────────────
     gsap.timeline({
-      scrollTrigger: {
-        trigger: '#p2',
-        start: 'top 90%',
-        toggleActions: 'play none none reverse'
-      }
+      scrollTrigger: { trigger: '#p2', start: 'top 80%', once: true }
     })
-    .to('.p2-label',   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
-    .to('.p2-image',   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '-=0.55')
-    .to('.p2-heading', { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '-=0.55')
-    .to('.p2-body',    { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '-=0.55');
+    .to('.p2-label',  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+    .to('.p2-image',  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15')
+    .to(w('.p2-heading'), { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' }, '<0.15')
+    .to('.p2-body',   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15');
 
     // ── Panel 3 ──────────────────────────────────────────────────
-    var words = document.querySelectorAll('#p3 .word');
-
     gsap.timeline({
-      scrollTrigger: {
-        trigger: '#p3',
-        start: 'top top',
-        end: '+=900',
-        pin: true,
-        anticipatePin: 1,
-        scrub: 1.5,
-        invalidateOnRefresh: true
-      }
+      scrollTrigger: { trigger: '#p3', start: 'top 80%', once: true }
     })
-    .to('.p3-image', { opacity: 1, y: 0, duration: 1.5 })
-    .to(words, { opacity: 1, y: 0, stagger: 0.08, duration: 0.6 }, '-=0.5');
+    .to('.p3-image',         { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+    .to(w('#p3 .p3-heading'),{ opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' }, '<0.15')
+    .to(w('#p3 .p3-body'),   { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' }, '<0.15')
+    .to(w('#p3 .p3-italic'), { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' }, '<0.15');
 
     // ── Panel 4 ──────────────────────────────────────────────────
     gsap.timeline({
-      scrollTrigger: {
-        trigger: '#p4',
-        start: 'top top',
-        end: '+=1000',
-        pin: true,
-        anticipatePin: 1,
-        scrub: 2,
-        invalidateOnRefresh: true
-      }
+      scrollTrigger: { trigger: '#p4', start: 'top 80%', once: true }
     })
-    .to('.p4-headline', { opacity: 1, y: 0, duration: 2 })
-    .to('.p4-beat-1',   { opacity: 1, y: 0, duration: 2 }, '+=0.3')
-    .to('.p4-beat-2',   { opacity: 1, y: 0, duration: 2 }, '+=0.3')
-    .to('.p4-body',     { opacity: 1, y: 0, duration: 1.5 }, '+=0.4');
+    .to(w('.p4-headline'), { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' })
+    .to(w('.p4-beat-1'),   { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' }, '<0.15')
+    .to(w('.p4-beat-2'),   { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' }, '<0.15')
+    .to('.p4-body',        { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15');
 
-    // ── Panel 5: dark → white background transition ───────────────
+    // ── Panel 5: background transition (scrub) stays separate ─────
     gsap.timeline({
-      scrollTrigger: {
-        trigger: '#p5',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1.5
-      }
+      scrollTrigger: { trigger: '#p5', start: 'top bottom', end: 'bottom top', scrub: 1.5 }
     })
-    .fromTo('#p5', { backgroundColor: '#1A1A1A' }, { backgroundColor: '#FFFFFF', ease: 'none', duration: 3 })
-    .to('.p5-heading', { opacity: 1, y: 0, duration: 1.5 }, '-=1.8')
-    .to('.p5-body',    { opacity: 1, y: 0, duration: 1.5 }, '-=1.2');
+    .fromTo('#p5', { backgroundColor: '#1A1A1A' }, { backgroundColor: '#FFFFFF', ease: 'none', duration: 3 });
+
+    gsap.timeline({
+      scrollTrigger: { trigger: '#p5', start: 'top 80%', once: true }
+    })
+    .to(w('.p5-heading'), { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' })
+    .to('.p5-body',       { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15');
 
     // ── Panel 6 ──────────────────────────────────────────────────
     gsap.timeline({
-      scrollTrigger: {
-        trigger: '#p6',
-        start: 'top 80%',
-        end: 'bottom top',
-        scrub: 1
-      }
+      scrollTrigger: { trigger: '#p6', start: 'top 80%', once: true }
     })
-    .to('.p6-label',   { opacity: 1, y: 0, duration: 1 })
-    .to('.p6-heading', { opacity: 1, y: 0, duration: 1 }, '-=0.5')
-    .to('.p6-body',    { opacity: 1, y: 0, duration: 1 }, '-=0.5')
-    .to('.p6-buttons', { opacity: 1, y: 0, duration: 0.8 }, '-=0.3');
+    .to('.p6-label',      { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+    .to(w('.p6-heading'), { opacity: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'expo.out' }, '<0.15')
+    .to('.p6-body',       { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15')
+    .to('.p6-buttons',    { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15');
   </script>
 </body>
 </html>
