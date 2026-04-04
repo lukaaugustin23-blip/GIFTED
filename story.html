@@ -111,12 +111,15 @@
       color: var(--white);
       line-height: 1.1;
       margin-top: 24px;
+      perspective: 800px;
+      transform-style: preserve-3d;
     }
 
-    .p1-phrase {
-      display: block;
+    .p1-headline span {
+      display: inline-block;
       opacity: 0;
-      transform: translateY(20px);
+      transform: rotateX(-90deg);
+      transform-origin: center bottom;
     }
 
     .p1-sub {
@@ -518,11 +521,7 @@
   <!-- Panel 1: The Statistic -->
   <section class="panel panel-1" id="p1">
     <p class="p1-label">ONE STORY OF MILLIONS</p>
-    <h1 class="p1-headline">
-      <span class="p1-phrase">No pencil.</span>
-      <span class="p1-phrase">No notebook.</span>
-      <span class="p1-phrase">No chance.</span>
-    </h1>
+    <h1 class="p1-headline">No pencil. No notebook. No chance.</h1>
     <p class="p1-sub">Every morning he walks to school knowing he has nothing to write with.</p>
     <div class="pulse-dot"></div>
   </section>
@@ -607,15 +606,22 @@
     // Helper: word spans inside a selector
     function w(sel) { return document.querySelectorAll(sel + ' .word'); }
 
-    // ── Panel 1: page-load animation ─────────────────────────────
-    var p1Phrases = document.querySelectorAll('.p1-phrase');
-    gsap.timeline({ delay: 0.3 })
-      .to('.p1-label',    { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
-      .to(p1Phrases[0],   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15')
-      .to(p1Phrases[1],   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '+=0.2')
-      .to(p1Phrases[2],   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '+=0.2')
-      .to('.p1-sub',      { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '+=0.4')
-      .to('.pulse-dot',   { opacity: 1, duration: 0.5, ease: 'expo.out' });
+    // ── Panel 1: page-load animation (mirrors hero title) ────────
+    (function() {
+      var headline = document.querySelector('.p1-headline');
+      var chars = headline.textContent.split('');
+      headline.innerHTML = chars.map(function(ch) {
+        if (ch === ' ') return '<span style="opacity:1;transform:none">&nbsp;</span>';
+        return '<span>' + ch + '</span>';
+      }).join('');
+      var letters = headline.querySelectorAll('span:not([style])');
+
+      gsap.timeline({ delay: 0.3 })
+        .to('.p1-label',  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+        .to(letters,      { rotateX: 0, opacity: 1, duration: 0.9, stagger: 0.06, ease: 'expo.out' }, '<0.2')
+        .to('.p1-sub',    { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '+=0.2')
+        .to('.pulse-dot', { opacity: 1, duration: 0.5, ease: 'expo.out' }, '<0.15');
+    }());
 
     // ── Panel 2 ──────────────────────────────────────────────────
     gsap.timeline({
