@@ -616,12 +616,11 @@
     gsap.timeline({
       scrollTrigger: {
         trigger: '#p2',
-        start: 'top 80%',
-        end: 'bottom top',
-        scrub: 1
+        start: 'top 75%',
+        toggleActions: 'play none none reverse'
       }
     })
-    .to(['.p2-label', '.p2-image', '.p2-heading', '.p2-body'], { opacity: 1, y: 0, duration: 1.2 });
+    .to(['.p2-label', '.p2-image', '.p2-heading', '.p2-body'], { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' });
 
     // ── Panel 3 ──────────────────────────────────────────────────
     var words = document.querySelectorAll('#p3 .word');
