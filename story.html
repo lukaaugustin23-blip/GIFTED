@@ -620,7 +620,10 @@
         toggleActions: 'play none none reverse'
       }
     })
-    .to(['.p2-label', '.p2-image', '.p2-heading', '.p2-body'], { opacity: 1, y: 0, duration: 0.8, ease: 'expo.out' });
+    .to('.p2-label',   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+    .to('.p2-image',   { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '-=0.55')
+    .to('.p2-heading', { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '-=0.55')
+    .to('.p2-body',    { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '-=0.55');
 
     // ── Panel 3 ──────────────────────────────────────────────────
     var words = document.querySelectorAll('#p3 .word');
