@@ -104,34 +104,26 @@
       transform: translateY(20px);
     }
 
-    .p1-number {
+    .p1-headline {
       font-family: var(--font-display);
-      font-size: clamp(72px, 12vw, 120px);
+      font-size: clamp(60px, 8vw, 96px);
       font-weight: 300;
       color: var(--white);
-      line-height: 1;
-      margin-top: 24px;
-      opacity: 0;
-      transform: scale(0.8);
-    }
-
-    .p1-text {
-      font-family: var(--font-body);
-      font-size: 22px;
-      color: var(--white);
-      line-height: 1.7;
-      max-width: 560px;
+      line-height: 1.1;
       margin-top: 24px;
       opacity: 0;
       transform: translateY(20px);
     }
 
-    .p1-source {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: rgba(255,255,255,0.35);
-      margin-top: 16px;
+    .p1-sub {
+      font-family: var(--font-body);
+      font-size: 20px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      max-width: 520px;
+      margin: 32px auto 0;
       opacity: 0;
+      transform: translateY(20px);
     }
 
     .pulse-dot {
@@ -521,7 +513,8 @@
   <!-- Panel 1: The Statistic -->
   <section class="panel panel-1" id="p1">
     <p class="p1-label">ONE STORY OF MILLIONS</p>
-    <p class="p1-text">Millions of children in the Philippines go to school every day without the basic tools to learn. G.I.F.T.Ed is changing that — one pencil at a time.</p>
+    <h1 class="p1-headline">No pencil. No notebook. No chance.</h1>
+    <p class="p1-sub">Every morning he walks to school knowing he has nothing to write with.</p>
     <div class="pulse-dot"></div>
   </section>
 
@@ -609,8 +602,9 @@
     gsap.timeline({
       scrollTrigger: { trigger: '#p1', start: 'top 80%', once: true }
     })
-    .to('.p1-label', { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
-    .to('.p1-text',  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15');
+    .to('.p1-label',    { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+    .to('.p1-headline', { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15')
+    .to('.p1-sub',      { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.15');
 
     // ── Panel 2 ──────────────────────────────────────────────────
     gsap.timeline({
