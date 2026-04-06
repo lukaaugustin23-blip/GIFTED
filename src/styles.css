@@ -264,7 +264,11 @@ section {
 
 .mission-section {
   background: var(--off-white);
-  padding: 160px 24px 60px;
+  padding: 15vh 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
 }
 
@@ -985,7 +989,10 @@ section {
     font-size: 16px;
   }
 
-  .mission-section,
+  .mission-section {
+    padding: 12vh 20px;
+  }
+
   .founders-section,
   .how-section,
   .events-section,
