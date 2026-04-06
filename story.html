@@ -164,12 +164,10 @@
     }
 
     .p2-image {
-      width: 400px;
-      max-width: 90vw;
-      height: 500px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
+      max-width: 600px;
+      width: 100%;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       margin: 32px auto 0;
@@ -177,10 +175,20 @@
       transform: translateY(30px);
     }
 
-    .p2-image-label {
+    .p2-photo {
+      max-width: 600px;
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .p2-caption {
       font-family: var(--font-mono);
-      font-size: 11px;
-      color: rgba(255,255,255,0.3);
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      margin-top: 10px;
     }
 
     .p2-heading {
@@ -504,7 +512,8 @@
   <section class="panel panel-2" id="p2">
     <p class="p2-label">HIS NAME IS MILJHON</p>
     <div class="p2-image">
-      <span class="p2-image-label">PHOTO COMING SOON</span>
+      <img src="/miljhon.jpeg" alt="Miljhon" class="p2-photo" />
+      <p class="p2-caption">Photo: Ley Halos / Unsplash. Story: World Vision Philippines.</p>
     </div>
     <h2 class="p2-heading">He is 9 years old.<br>He lives in the Philippines.</h2>
     <p class="p2-body">His family earns less than $23 a month.<br>Every morning, he gets up and goes to school anyway.</p>
