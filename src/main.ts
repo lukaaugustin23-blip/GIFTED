@@ -280,7 +280,7 @@ function initGSAPAnimations() {
   const donateSection = document.querySelector('.donate-section');
   if (donateSection) {
     gsap.fromTo(donateSection,
-      { backgroundColor: '#1A1A1A' },
+      { backgroundColor: 'transparent' },
       {
         backgroundColor: '#1A1A1A',
         ease: 'none',
