@@ -4,8 +4,11 @@
   --warm-gray: #E8E4DF;
   --ink: #1A1A1A;
   --mid-gray: #6B6B6B;
-  --accent: #C8832A;
-  --accent-light: rgba(200, 131, 42, 0.12);
+  --accent: #CE1126;
+  --accent-hover: #B00E1F;
+  --accent-light: rgba(206, 17, 38, 0.12);
+  --dark-section: #0038A8;
+  --gold: #FCD116;
   --glass: rgba(255, 255, 255, 0.72);
 
   --font-display: 'Cormorant Garamond', serif;
@@ -173,14 +176,14 @@ section {
 }
 
 .btn-primary:hover {
-  background: #D4943A;
-  box-shadow: 0 8px 32px rgba(200,131,42,0.35);
+  background: #B00E1F;
+  box-shadow: 0 8px 32px rgba(252,209,22,0.35);
   transform: translateY(-2px);
 }
 
 .btn-primary:active {
   transform: scale(0.97);
-  box-shadow: 0 2px 8px rgba(200,131,42,0.2);
+  box-shadow: 0 2px 8px rgba(252,209,22,0.2);
 }
 
 .btn-secondary {
@@ -279,7 +282,7 @@ section {
   width: 100%;
   height: 100%;
   opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 500'%3E%3Cpath d='M0,250 Q250,200 500,250 T1000,250' fill='none' stroke='%23C8832A' stroke-width='1'/%3E%3Cpath d='M0,300 Q250,250 500,300 T1000,300' fill='none' stroke='%23C8832A' stroke-width='1'/%3E%3Ccircle cx='200' cy='250' r='4' fill='%23C8832A'/%3E%3Ccircle cx='500' cy='270' r='4' fill='%23C8832A'/%3E%3Ccircle cx='800' cy='240' r='4' fill='%23C8832A'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 500'%3E%3Cpath d='M0,250 Q250,200 500,250 T1000,250' fill='none' stroke='%23CE1126' stroke-width='1'/%3E%3Cpath d='M0,300 Q250,250 500,300 T1000,300' fill='none' stroke='%23CE1126' stroke-width='1'/%3E%3Ccircle cx='200' cy='250' r='4' fill='%23CE1126'/%3E%3Ccircle cx='500' cy='270' r='4' fill='%23CE1126'/%3E%3Ccircle cx='800' cy='240' r='4' fill='%23CE1126'/%3E%3C/svg%3E");
   background-size: cover;
   background-position: center;
   z-index: 0;
@@ -334,7 +337,7 @@ section {
   margin: 32px auto 0;
   padding: 20px 28px;
   border-left: 2px solid var(--accent);
-  background: rgba(200, 131, 42, 0.07);
+  background: rgba(206, 17, 38, 0.07);
   border-radius: 0 4px 4px 0;
   font-style: normal;
 }
@@ -347,7 +350,7 @@ section {
 }
 
 .impact-section {
-  background: #1A1A1A;
+  background: #0038A8;
   padding: 60px 24px 40px;
 }
 
@@ -364,7 +367,7 @@ section {
 .impact-rule {
   width: 100%;
   height: 1px;
-  background: #C8832A;
+  background: #CE1126;
 }
 
 .impact-cards {
@@ -401,7 +404,7 @@ section {
 .stat-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: #C8832A;
+  color: #FCD116;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   margin-top: 16px;
@@ -605,7 +608,7 @@ section {
 
 .event-bar {
   height: 6px;
-  background: linear-gradient(90deg, var(--accent) 0%, #D4943A 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, #B00E1F 100%);
 }
 
 .event-icon {
@@ -650,7 +653,7 @@ section {
 }
 
 .social-icon-link {
-  color: #C8832A;
+  color: #CE1126;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -658,7 +661,7 @@ section {
 }
 
 .social-icon-link:hover {
-  color: #D4943A;
+  color: #FCD116;
   transform: translateY(-3px);
 }
 
@@ -686,7 +689,7 @@ section {
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(200,131,42,0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(252,209,22,0.15) 0%, transparent 70%);
   filter: blur(40px);
 }
 
@@ -1140,9 +1143,9 @@ section {
 .btn-story:hover::after { left: 100%; }
 
 .btn-story:hover {
-  background: #D4943A;
+  background: #B00E1F;
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(200,131,42,0.35);
+  box-shadow: 0 8px 32px rgba(252,209,22,0.35);
 }
 
 .btn-story:active { transform: scale(0.97); }
@@ -1154,7 +1157,7 @@ section {
   left: 0;
   height: 2px;
   width: 0%;
-  background: #C8832A;
+  background: #CE1126;
   z-index: 9999;
   pointer-events: none;
 }
@@ -1186,7 +1189,7 @@ section {
 }
 
 .nav-link.active {
-  color: #C8832A;
+  color: #CE1126;
 }
 
 .nav-link:hover {
@@ -1217,7 +1220,7 @@ section {
 .loader-line {
   height: 1px;
   width: 0;
-  background: #C8832A;
+  background: #CE1126;
   margin-top: 20px;
   transition: width 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
