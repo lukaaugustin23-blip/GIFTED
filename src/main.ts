@@ -32,9 +32,9 @@ function initThreeJS() {
   const geometry = new THREE.SphereGeometry(0.5, 16, 16);
 
   for (let i = 0; i < particleCount; i++) {
-    const isAccent = Math.random() < 0.15;
-    const color = isAccent ? 0xC8832A : (Math.random() < 0.5 ? 0xE8E4DF : 0xF0EDE8);
-    const opacity = isAccent ? 0.3 : 0.6;
+    const isBlue = Math.random() < 0.5;
+    const color = isBlue ? 0x4A90D9 : 0xE05252;
+    const opacity = 0.6;
 
     const material = new THREE.MeshBasicMaterial({
       color: color,

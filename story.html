@@ -93,12 +93,23 @@
       text-align: center;
     }
 
+    .p1-intro-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
     .p1-label {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 13px;
       color: var(--accent);
-      letter-spacing: 0.3em;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
+      margin-top: 8px;
       opacity: 0;
       transform: translateY(20px);
     }
@@ -502,7 +513,8 @@
 
   <!-- Panel 1: The Statistic -->
   <section class="panel panel-1" id="p1">
-    <p class="p1-label">ONE STORY OF MILLIONS</p>
+    <p class="p1-intro-name">Milijhon is</p>
+    <p class="p1-label">YOUR DONATIONS HELP MILLIONS LIKE HIM</p>
     <h1 class="p1-headline">No pencil. No notebook. No chance.</h1>
     <p class="p1-sub">Every morning he walks to school knowing he has nothing to write with.</p>
     <div class="pulse-dot"></div>
@@ -577,7 +589,8 @@
       var letters = headline.querySelectorAll('span:not([style])');
 
       gsap.timeline({ delay: 0.3 })
-        .to('.p1-label',  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+        .to('.p1-intro-name', { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' })
+        .to('.p1-label',  { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '<0.3')
         .to(letters,      { rotateX: 0, opacity: 1, duration: 0.9, stagger: 0.06, ease: 'expo.out' }, '<0.2')
         .to('.p1-sub',    { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out' }, '+=0.2')
         .to('.pulse-dot', { opacity: 1, duration: 0.5, ease: 'expo.out' }, '<0.15');
