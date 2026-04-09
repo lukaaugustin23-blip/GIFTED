@@ -611,7 +611,7 @@ section {
 .events-rule {
   width: 100%;
   height: 1px;
-  background: rgba(255, 255, 255, 0.15);
+  background: #0038A8;
   margin: 0 0 60px;
 }
 
@@ -704,6 +704,13 @@ section {
   color: rgba(255, 255, 255, 0.7);
   transform: translateY(-3px);
 }
+
+.social-icon-link[aria-label="Instagram"] { color: #E1306C; }
+.social-icon-link[aria-label="Instagram"]:hover { color: #c42560; }
+.social-icon-link[aria-label="YouTube"] { color: #FF0000; }
+.social-icon-link[aria-label="YouTube"]:hover { color: #cc0000; }
+.social-icon-link[aria-label="TikTok"] { color: var(--white); }
+.social-icon-link[aria-label="TikTok"]:hover { color: rgba(255, 255, 255, 0.7); }
 
 .donate-section {
   background: transparent;
