@@ -7,7 +7,7 @@
   --accent: #E8C84A;
   --accent-hover: #D4B43A;
   --accent-light: rgba(232, 200, 74, 0.12);
-  --dark-section: #0F1F4D;
+  --dark-section: #1A1A1A;
   --glass: rgba(255, 255, 255, 0.72);
 
   --font-display: 'Cormorant Garamond', serif;
@@ -379,7 +379,7 @@ section {
 }
 
 .impact-section {
-  background: #0F1F4D;
+  background: #1A1A1A;
   padding: 60px 24px 40px;
 }
 

@@ -282,7 +282,7 @@ function initGSAPAnimations() {
     gsap.fromTo(donateSection,
       { backgroundColor: 'transparent' },
       {
-        backgroundColor: '#0F1F4D',
+        backgroundColor: '#1A1A1A',
         ease: 'none',
         scrollTrigger: {
           trigger: donateSection,
