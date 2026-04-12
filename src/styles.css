@@ -816,11 +816,11 @@ section {
 }
 
 .donate-stats .stat-number {
-  font-size: 48px;
+  font-size: 72px;
 }
 
 .donate-stats .stat-label {
-  font-size: 10px;
+  font-size: 13px;
 }
 
 .donate-stats .impact-rule {
