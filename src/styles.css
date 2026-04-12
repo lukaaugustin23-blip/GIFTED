@@ -1269,9 +1269,11 @@ section {
 /* ── Team Marquee ──────────────────────────────────────────── */
 .team-section {
   background: var(--off-white);
-  padding: 100px 0 120px;
+  padding: 120px 0 160px;
   text-align: center;
   overflow: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .team-label {
