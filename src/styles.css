@@ -160,11 +160,12 @@ section {
 }
 
 .btn-gold {
-  background: rgba(232, 200, 74, 0.35);
+  background: rgba(232, 200, 74, 0.6);
   color: #1A1A1A;
-  border: 1px solid rgba(232, 200, 74, 0.5);
+  border: 1px solid rgba(232, 200, 74, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  font-weight: 600;
 }
 
 .btn-gold::after {
