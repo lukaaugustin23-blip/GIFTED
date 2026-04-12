@@ -352,11 +352,12 @@ section {
 
 .mission-section {
   background: var(--off-white);
-  padding: 15vh 24px;
+  padding: 0 24px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: relative;
 }
 
@@ -401,7 +402,7 @@ section {
   font-weight: 300;
   color: var(--ink);
   line-height: 1.2;
-  margin-top: 20px;
+  margin-top: 8px;
 }
 
 .mission-body {
@@ -410,7 +411,7 @@ section {
   color: var(--mid-gray);
   line-height: 1.8;
   max-width: 640px;
-  margin: 28px auto 0;
+  margin: 48px auto 0;
 }
 
 .mission-pull-quote {
@@ -1152,7 +1153,7 @@ section {
   }
 
   .mission-section {
-    padding: 12vh 20px;
+    padding: 0 20px;
   }
 
   .founders-section,
