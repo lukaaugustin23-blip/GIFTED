@@ -663,8 +663,10 @@ section {
 
 .events-section {
   background: #1A1A1A;
-  padding: 160px 24px;
+  padding: 60px 80px;
+  min-height: 50vh;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .events-rule {
@@ -1195,8 +1197,10 @@ section {
 /* ── Story teaser ──────────────────────────────────────────── */
 .story-teaser {
   background: var(--white);
-  padding: 120px 24px;
+  padding: 60px 80px;
+  min-height: 50vh;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .story-teaser-label {
